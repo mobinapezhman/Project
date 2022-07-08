@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/853d5a7777.js" crossorigin="anonymous"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Project</title>
+    <link rel="stylesheet" href="../css/project.css" />
+    
+  </head>
+  <body>
+  <div class="container-scroller">
+
+      <!--nav bar-->
+
+      <nav class="navbar fixed-top d-flex flex-row">
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="search-field d-none d-md-block">
+            <form class="d-flex align-items-center h-100" action="#">
+              <div class="input-group">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input
+                  type="text" class="search-box form-control bg-transparent border-0"
+                  placeholder="Search projects"/>
+              </div>
+            </form>
+          </div>
+          <div class="nav-profile-img">
+            <img
+              src="https://m.media-amazon.com/images/I/31Cd9UQp6eL._SX355_.jpg"
+              style="width: 35px"
+              alt="image"
+            />
+            <div class="green-logged-in"> ● </div>
+          </div>
+          <div class="nav-profile-text">
+            <p class="mb-1 text-black"> Mobina Pezhman </p>
+          </div>
+          <div class="nav-item d-none d-lg-block full-screen-link">
+             <a class="nav-link"> 
+             <i onclick="openFullscreen();"
+              class="fa-solid fa-expand"
+              style="margin-top: 20px; margin-left: 46px; font-size: 13px"
+              id="fullscreen-button"
+            ></i>
+                                                                       <i class="mdi mdi-fullscreen" id="fullscreen-button"></i> 
+             </a> 
+          </div>
+          <!-- <a class="nav-link">
+            <i
+              class="fa-solid fa-expand"
+              style="margin-top: 20px; margin-left: 46px; font-size: 13px"
+            ></i>
+          </a> -->
+          <div>
+            <a class="nav-link count-indicator" id="messageDropdown" href="#">
+              <i class="fa-regular fa-envelope"></i>
+              <div class="yellow-logged-in"> ● </div>
+            </a>
+          </div>
+          <div >
+            <a class="nav-link count-indicator" id="messageDropdown" href="#">
+              <i class="first-bell fa-regular fa-bell"></i>
+              <div class="red-logged-in"> ● </div>
+            </a>
+          </div>
+          <div>
+            <a class="nav-link count-indicator" id="messageDropdown" href="#">
+              <i class="fa-solid fa-power-off"></i>
+            </a>
+          </div>
+          <!-- <div>
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-palette" style=" margin-top: 18px;
+              margin-left: 46px;
+              font-size: 17px;
+              cursor: pointer;"></i>
+            </a>
+          </div> -->
+          <div>
+            <a class="nav-link" href="#">
+              <i class="first-grip-line fa-solid fa-grip-lines"></i>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <div class="right-sidebar-toggler-wrapper">
+          <div class="sidebar-toggler" id="settings-trigger"><i class="fa-solid fa-palette"></i></div>
+          <div class="sidebar-toggler" id="layout-toggler"><i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i></div>
+          <div class="sidebar-toggler" id="chat-toggler"><i class="fa-solid fa-comment-dots"></i></div>
+        </div>
+      <!--side bar-->
+
+      <nav class="sidebar sidebar-offcanvas" id="sidebar" >
+        <ul class="nav" >
+          <li class="nav-item nav-profile">
+            <a href="#" class="nav-link">
+              <div class="sidebar-profile-image">
+                <img src="https://m.media-amazon.com/images/I/31Cd9UQp6eL._SX355_.jpg" 
+                style="width: 47px ; margin-top: 85px; margin-left: 8px;" alt="profile">
+              </div>
+            </li>
+            <li>
+              <div class="nav-profile-text d-flex flex-column">
+                <span class="sidebar-name mb-2">Mobina Sani</span>
+                <span class="sidebar-job text-small">Project Manager</span>
+              </div>
+              <div>
+              <i class="first-bookmark fa-solid fa-bookmark"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <div style="margin-top: 160px ;">
+              <span class="sidebar-dashboard">Dashboard</span>
+              <i class="sidebar-house fa-solid fa-house"></i> 
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+              <div style="margin-top: 200px ;">
+              <span class="layouts-title menu-title">Page Layouts</span>
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </a>
+          </div>
+            <div class="collapse" id="page-layouts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/layout/boxed-layout.html">Boxed</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/layout/rtl-layout.html">RTL</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#apps" aria-expanded="false" aria-controls="apps">
+              <div style="margin-top: 270px ;">
+              <span class="apps-title menu-title">Apps</span>
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/samples/widgets.html">
+              <div style="margin-top: 325px ;">
+              <span class="widgets-title menu-title">Widgets</span>
+              <i class="first-massage fa-solid fa-message"></i>
+            </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
+              <div  style="margin-top: 380px ;">
+              <span class="sideba-layouts-title menu-title">Sidebar Layouts</span>
+              <i class="second-grip-line fa-solid fa-grip-lines"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <div style="margin-top: 435px ;">
+              <span class="basic-title menu-title">Basic UI Elements</span>
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div style="margin-top: 490px ;">
+            <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false" aria-controls="ui-advanced">
+              <span class="advanced-title menu-title">Advanced UI</span>
+              <i class="fa-solid fa-square"></i>
+            </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/popups.html">
+              <div style="margin-top: 545px ;">
+              <span class="popups-title menu-title">Popups</span>
+              <i class="second-massage fa-solid fa-message"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/notifications.html">
+              <div  style="margin-top: 599px ;">
+              <span class="notifications-title menu-title">Notifications</span>
+              <i class="second-bell fa-solid fa-bell"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+              <div style="margin-top: 654px ;">
+              <span class="icons-title menu-title">Icons</span>
+              <i class="fa-solid fa-address-book"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
+              <div style="margin-top: 710px ;">
+              <span class="forms-title menu-title">Forms</span>
+              <i class="fa-solid fa-align-justify"></i>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item sidebar-actions">
+            <div style="margin-top: 780px">
+            <span class="nav-link" style="margin-left: -565px;">
+              <div >
+                <h6 class="projects-title font-weight-normal mb-3">Projects</h6>
+              </div>
+              <hr style="width: 185px ;height: 10px; color: rgb(169, 169, 169);">
+              <button class="projects-btn btn btn-block btn-lg">+ Add a project</button>
+              <div class="mt-4">
+                <div >
+                  <p class="categories-title">Categories</p>
+                </div>
+                <hr style="width: 175px ;height: 10px; color: rgb(169, 169, 169);">
+                <ul class=" mt-1" style="margin-left: -30px; color:#29323D ;list-style-type: none;">
+                  <div style="display: flex;">
+                    <i class="free fa-regular fa-circle"></i>
+                    <li style="margin-left: 9px; margin-top:-5px">Free</li>
+                    </div>
+                    <br>
+                  <div style="display: flex;">
+                  <i class="pro fa-regular fa-circle"></i>
+                  <li style="margin-left: 9px; margin-top:-5px" >Pro</li>
+                  </div>
+                </ul>
+              </div>
+            </span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-panel" >
+        <div class="content-wrapper">
+          <div class="page-header" >
+
+          <!--dashboard icon-->
+
+            <div style="margin-top: -935px ; margin-left: 285px; ">
+              
+                <i class="second-house fa-solid fa-house"></i>
+                <div style="margin-top: -32px ; margin-left: 45px;">
+                <span class="body-dashboard">Dashboard</span>
+                </div>
+              
+            </div> 
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page" style="margin-left: 1370px; margin-top:-35px">
+                  <span class="overview-title" >Overview </span><i class="overview-icon fa-solid fa-exclamation"></i>
+                </li>
+              </ul>
+             
+            </nav>
+          </div>
+
+          <!--cards-->
+
+
+          <div class="row" style="margin-left: 273px ; margin-right: 8px; margin-top: 35px;">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="first-card card ">
+                <div class="card-body">
+                  <h4 class="font-weight-normal mb-3" style="font-size: 18px">Weekly Sales<i class="chart-icon fa-solid fa-chart-line"></i>
+                  </h4>
+                  <h2 class="mb-5">$ 15,0000</h2>
+                  <h6 class="card-text" style="font-size:15px ;">Increased by 60%</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="second-card card">
+                <div class="card-body"> 
+                  <h4 class="font-weight-normal mb-3" style="font-size: 18px">Weekly Orders<i class="second-bookmark fa-regular fa-bookmark"></i>
+                  </h4>
+                  <h2 class="mb-5">45,6334</h2>
+                  <h6 class="card-text" style="font-size:15px ;">Decreased by 10%</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="third-card card ">
+                <div class="card-body">
+                  <h4 class="font-weight-normal mb-3" style="font-size: 18px">Visitors Online <i class="diamond-icon fa-regular fa-gem"></i>
+                  </h4>
+                  <h2 class="mb-5">95,5741</h2>
+                  <h6 class="card-text"  style="font-size:15px ;">Increased by 5%</h6>
+                </div>
+              </div>
+            </div>
+         </div>
+          
+         <!--column chart-->
+         
+         <div class="row" style="margin-left: 273px ; margin-right: 8px; margin-top: 44px; ">
+            <div class="col-md-7  ">
+              <div class="card" style="width:675px ; height:465px ; " >
+                <div class="card-body">
+                  <div>
+                    <p class="column-title card-title float-left">Visit And Sales Statistics</p>
+                    <figure class="highcharts-figure">
+                      <div id="container" style="width:630px ; height:360px ; padding-top: -100px;"></div>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--donut chart-->
+
+            <div class="col-md-5 grid-margin stretch-card" > 
+              <div class="card" style="width: 472px; height:465px">
+                <h4 class="card-title">Traffic Sources</h4>
+                <canvas id="myChart" ></canvas>
+              </div>
+            </div> 
+          </div>
+
+          <!--recent ticket box-->
+
+          <div class="row">
+            <div class="col-12 ">
+              <div class="ticket-card card">
+                <div class="card-body">
+                  <h4 class="card-title" style="font-size: 18px;">Recent Tickets</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr >
+                          <th style="font-size: 14px; font-weight: 500;"> Assignee </th>
+                          <th style="font-size: 14px; font-weight: 500;"> Subject </th>
+                          <th style="font-size: 14px; font-weight: 500;"> Status </th>
+                          <th style="font-size: 14px; font-weight: 500;"> Last Update </th>
+                          <th style="font-size: 14px; font-weight: 500;"> Tracking ID </th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <tr>
+                          <td style="font-size: 14px;">
+                            <img src="https://m.media-amazon.com/images/I/41jLBhDISxL._SY355_.jpg" 
+                             class="ticket-img mr-2" alt="image"> David Grey
+                          </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> Fund is not recieved </td>
+                          <td style="padding-top: 20px; font-size: 10px; font-weight: 400;;">
+                            <p class="done">DONE</p>
+                          </td>
+                          <td class="ticket-item" style="padding-top: 20px ;font-size: 14px; font-weight: 400;"> Dec 5, 2017 </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> WD-12345 </td>
+                        </tr>
+                        <tr>
+                          <td style="font-size: 14px;">
+                            <img src="https://m.media-amazon.com/images/I/31Cd9UQp6eL._SX355_.jpg"
+                             class="ticket-img mr-2" alt="image"> Stella Johnson
+                          </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> High loading time </td>
+                          <td style="padding-top: 20px ; font-size: 10px; font-weight: 400;">
+                            <p class="progress-btn">PROGRESS</p>
+                          </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> Dec 12, 2017 </td>
+                          <td class="ticket-item"style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> WD-12346 </td>
+                        </tr>
+                        <tr>
+                          <td style="font-size: 14px;">
+                            <img src="https://m.media-amazon.com/images/I/41B3Q0XgFVL._SY355_.jpg"
+                             class="ticket-img mr-2" alt="image"> Marina Michel
+                          </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> Website down for one week </td>
+                          <td style="padding-top: 20px ; font-size: 10px; font-weight: 400;">
+                            <p class="onhold">ON HOLD</p>
+                          </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> Dec 16, 2017 </td>
+                          <td class="ticket-item" style="padding-top: 20px ; font-size: 14px; font-weight: 400;"> WD-12347 </td>
+                        </tr>
+                        <tr>
+                          <td style="border: none; font-size: 14px;">
+                            <img src="https://m.media-amazon.com/images/I/31o-VWlOtKL._SY355_.jpg" 
+                             class="ticket-img mr-2" alt="image"> John Doe
+                          </td>
+                          <td class="ticket-item" style="border:none ; padding-top: 20px ; font-size: 14px; font-weight: 400;;"> Loosing control on server </td>
+                          <td style="border:none ; padding-top: 20px ; font-size: 10px; font-weight: 400;;">
+                            <p class="rejected">REJECTED</p>
+                          </td>
+                          <td class="ticket-item" style="border:none ; padding-top: 20px ; font-size: 14px; font-weight: 400;;"> Dec 3, 2017 </td>
+                          <td class="ticket-item" style="border:none ; padding-top: 20px ; font-size: 14px; font-weight: 400;;"> WD-12348 </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+           <!--date picker-->
+
+            <div class="col-lg-5 grid-margin stretch-card">
+              <div class="calender-card card">
+                <div id="calendar">
+                  <div id="calendar_header">    
+                    <!-- <i class="fa-solid fa-chevron-left"></i> -->
+                         <h1 style="margin-left: 72px"></h1>    
+                         <!-- <i class="fa-solid fa-chevron-right"></i> -->
+                           </div>
+                  <div id="calendar_weekdays"></div>
+                  <div id="calendar_content"></div>
+                </div>
+              </div>
+            </div>
+
+            <!--recent update-->
+
+            <div class="col-lg-7 grid-margin stretch-card">
+              <div class="card" style="margin-top: 44px; height:550px ; width: 665px ; margin-left: 165px; padding: 20px;">
+                <div class="card-body">
+                  <p class="card-title" style="font-size: 20px; font-weight:600; margin-left: 10px ; color: #343A40;">Recent Updates</p>
+                  <div class="d-flex">
+                    <div class="d-flex align-items-center mr-4  font-weight-light" style="margin-left: 10px ; color: #9C9FA6;">
+                      <i class="fa-regular fa-user" style="font-size: 12px ; margin-right:12px"></i>
+                      <span style="margin-right: 20px;font-weight: lighter;">jack Menqu</span>
+                    </div>
+                    <div class="d-flex align-items-center ; font-weight-light">
+                      <i class="fa-solid fa-clock" style="font-size: 14px ; margin-right:12px; color: #9C9FA6;"></i>
+                      <span style="color:#9C9FA6 ; font-weight:lighter">October 3rd, 2018</span>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-6">
+                      <img src="../image/pic1.png" class="mb-2 mw-100 w-100 rounded" style="margin-left: 10px" alt="image">
+                      <img src="../image/pic3.png" class="mw-100 w-100 rounded"style="margin-left:10px" alt="image">
+                    </div>
+                    <div class="col-6 pl-1">
+                      <img src="../image/pic2.png" class="mb-2 mw-100 w-100 rounded" alt="image">
+                      <img src="../image/pic4.png" class="mw-100 w-100 rounded"  alt="image">
+                    </div>
+                  </div>
+                  <div class="d-flex mt-5 align-items-top">
+                    <img src="https://m.media-amazon.com/images/I/41jLBhDISxL._SY355_.jpg" 
+                    style="width: 37px ; height: 37px; margin-right: 14px; margin-top: -20px;" class=" rounded-circle" alt="image">
+                    <div class="mb-0 flex-grow" style="margin-top: -20px">
+                      <p class="mr-2 mb-2" style="font-size:16px; font-weight:600; color: #343A40; ">School Website - Authentication Module.</p>
+                      <p class="mb-0 font-weight-light" style="font-weight:300;">It is a long established fact that a reader will be distracted by the readable content of a page.</p>
+                    </div>
+                    <div class="ml-auto" style="margin-top: -20px">
+                      <i class="fa-regular fa-heart" style="color:#9C9FA6; font-size:14px"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+         <div class="row">
+
+          <!--project status-->
+
+          <div class="col-md-7 grid-margin stretch-card">
+            <div class="project-card card">
+              <div class="card-body">
+                <h4 class="card-title" style=" font-weight:600 ; font-size:20px">Project Status</h4>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="project-th-title"> # </th>
+                        <th class="project-th-title"> Name </th>
+                        <th class="project-th-title"> Due Date </th>
+                        <th class="project-th-title"> Progress </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> 1 </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> Herman Beck </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> May 15, 2015 </td>
+                        <td style="padding-top: 17px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;">
+                          <div class="progress" style="height: 9px">
+                            <div class="progress-bar" role="progressbar" style="width: 25% ; background-color: #4CFF85;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> 2 </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> Messsy Adam </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> Jul 01, 2015 </td>
+                        <td style="padding-top: 17px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;">
+                          <div class="progress" style="height: 9px">
+                            <div class="progress-bar" role="progressbar" style="width: 75% ; background-color: #FF904C;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> 3 </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> John Richards </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> Apr 12, 2015 </td>
+                        <td style="padding-top: 17px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;">
+                          <div class="progress" style="height: 9px">
+                            <div class="progress-bar" role="progressbar" style="width: 90% ; background-color: #F7FF4C;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> 4 </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> Peter Meggik </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> May 15, 2015 </td>
+                        <td style="padding-top: 17px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;">
+                          <div class="progress" style="height: 9px">
+                            <div class="progress-bar"  role="progressbar" style="width: 50% ; background-color: #D14CFF;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> 5 </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> Edward </td>
+                        <td class="project-td-title" style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;"> May 03, 2015 </td>
+                        <td style="padding-top: 17px ; padding-bottom: 13px; font-size: 14px; font-weight: 400;">
+                          <div class="progress" style="height: 9px">
+                            <div class="progress-bar"   role="progressbar" style="width: 35%; background-color: #FF904C;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr >
+                        <td style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400; border: none;"> 6 </td>
+                        <td style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400; border: none;"> Ronald </td>
+                        <td style="padding-top: 13px ; padding-bottom: 13px; font-size: 14px; font-weight: 400; border: none;"> Jun 05, 2015 </td>
+                        <td style="padding-top: 17px ; padding-bottom: 13px; font-size: 14px; font-weight: 400; border: none;">
+                          <div class="progress" style="height: 9px">
+                            <div  class="progress-bar" role="progressbar" style="width: 65% ; background-color: #4CBEFF;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 grid-margin stretch-card">
+
+           <!--todo list-->
+
+            <div class="todo-card card">
+              <div class="card-body">
+                <div class="wrapper">
+                  <div class="task-input" >
+                    <!-- <i class="fa-solid fa-grip-lines" style="margin-top: 20px;"></i> -->
+                    <input type="text" placeholder="What do you need to do today?" style="margin-top: 30px; margin-left: 1px; font-size: 13px;">
+                   
+                  </div>
+                  <div class="controls" style="margin-top: 30px">
+                    <div class="filters" style="margin-left: 5px">
+                      <span class="active" id="all">All</span>
+                      <span id="pending">Pending</span>
+                      <span id="completed">Completed</span>
+                      <span><button class="clear-btn" style="margin-left: 27px;">Clear All</button></span>
+                    </div>
+                  </div>
+                  <ul class="task-box"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <footer class="footer" style="margin-top: 100px ; margin-left: 265px;">
+        
+            <div >
+              <span style="font-size:small">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+              <span  style="margin-left: 60px; font-size: small;">Hand-crafted & made with <i class="fa-solid fa-heart" style="color: rgb(255, 120, 120)"></i></span>
+            </div>
+          </footer> -->
+        </div> 
+      </div>
+    </div>
+    <script src="../js/columnChart.js"></script>
+    <script src="../js/donutChart.js"></script>
+    <script src="../js/calender.js"></script>
+    <script src="../js/todolist.js"></script>
+  </body>
+</html>
+
+
